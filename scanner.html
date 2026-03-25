@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OrbiTrak Debris Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>OrbiTrak</h2>
+        <a href="index.html">Homepage</a>
+        <a href="scanner.html" class="active">Space Debris Scanner</a>
+        <!-- <a href="visualizer.html">Orbit Visualizer</a> */ -->
+    </div>
+
+    <div class="content">
+
+        <!-- STEP 1 -->
+        <div id="step1" class="step">
+            <h1>Step 1: Enter Coordinates</h1>
+
+            <label>Enter Latitude:</label>
+            <input id="latInput" type="number" step="0.0001">
+
+            <label>Enter Longitude:</label>
+            <input id="lonInput" type="number" step="0.0001">
+
+            <button class="next-btn" onclick="goToStep2()">Next →</button>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step2" class="step hidden">
+            <h1>Step 2: Enter Search Radius</h1>
+
+            <label>Search Radius (km):</label>
+            <input id="radiusInput" type="number" min="1" max="2000">
+
+        <!--     <div class="radius-visual">
+                <img src="assets/radius_example.png" alt="Radius Example">
+            </div> -->
+
+            <div class="radius-visual">
+                <img id="radiusBaseImage" src="assets/radius_example.png" alt="Radius Example">
+                <canvas id="radiusCanvas"></canvas>
+            </div>
+
+
+            <button class="next-btn" onclick="startScan()">Next →</button>
+        </div>
+
+        <!-- STEP 3: LOADING -->
+        <div id="loadingScreen" class="step hidden">
+            <h1>Finding Debris...</h1>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+            <p id="loadingStatus">Initializing scan...</p>
+        </div>
+        
+        <!-- STEP 4: RESULTS -->
+        <div id="resultsPage" class="step hidden">
+
+            <div class="scan-header">
+                <div class="snapshot-info">
+                    <span id="snapshotTimestamp"></span>
+                </div>
+
+                <div class="quick-actions">
+                    <div id="controlsBar">
+                        <!-- <button id="startScanBtn" class="filter-btn">Start Scanning</button> -->
+                        <button id="btnTop10" class="filter-btn">Top 10 Most Dangerous</button>
+                        <button id="btnMinDanger" class="filter-btn">Min Danger</button>
+                        <button id="btnShowAll" class="filter-btn" style="display:none;">Show All</button>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Scan Results</h1>
+            <div class="results-toolbar">
+                <!-- <button id="downloadPdfBtn" class="toolbar-btn">Download as PDF</button> -->
+                <button id="viewModeToggle" class="toolbar-btn">Switch to table mode</button>
+            </div>
+          <div id="resultsHeader" class="results-header">
+    <div id="resultsSummary"></div>
+
+    <div id="resultsControls">
+        <select id="sortSelect">
+            <option value="danger_desc">Danger (high → low)</option>
+            <option value="altitude_desc">Altitude (high → low)</option>
+            <option value="altitude_asc">Altitude (low → high)</option>
+            <option value="velocity_desc">Velocity (high → low)</option>
+        </select>
+
+        <select id="orbitFilter">
+            <option value="all">Orbit: All</option>
+            <option value="LEO">LEO</option>
+            <option value="MEO">MEO</option>
+            <option value="GEO">GEO</option>
+            <option value="GTO">GTO</option>
+            <option value="SSO">SSO</option>
+        </select>
+
+        <select id="sizeFilter">
+            <option value="all">Size: All</option>
+            <option value="small">Small (&lt; 10 cm)</option>
+            <option value="medium">Medium (10–100 cm)</option>
+            <option value="large">Large (&gt; 100 cm)</option>
+        </select>
+
+        <select id="materialFilter">
+            <option value="all">Material: All</option>
+            <option value="aluminum">Aluminum</option>
+            <option value="steel">Steel</option>
+            <option value="composite">Composite</option>
+        </select>
+
+        <select id="countryFilter">
+            <option value="all">Country: All</option>
+            <option value="US">US</option>
+            <option value="PRC">PRC</option>
+            <option value="IND">IND</option>
+            <option value="CIS">CIS</option>
+            <option value="FR">FR</option>
+            <option value="UK">UK</option>
+            <option value="JP">JP</option>
+            <option value="BR">BR</option>
+            <option value="ESA">ESA</option>
+            <option value="OTHER">Other</option>
+        </select>
+
+    </div>
+</div>
+
+<div id="resultsContainer"></div>
+<div id="paginationControls" class="pagination"></div>
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>

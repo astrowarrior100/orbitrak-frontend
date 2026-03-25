@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orbit Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Local OrbitControls -->
+    <script src="OrbitControls.js"></script>
+
+    <!-- Satellite.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/satellite.js/4.0.0/satellite.min.js"></script>
+</head>
+
+<body>
+    <div id="orbitContainer"></div>
+
+    <button id="backToResultsBtn" class="back-btn">← Back to Scan Results</button>
+
+    <div id="orbitInfoPanel">
+        <h2 id="objName"></h2>
+        <p><strong>NORAD:</strong> <span id="objNorad"></span></p>
+        <p><strong>Orbit:</strong> <span id="objOrbit"></span></p>
+        <p><strong>Altitude:</strong> <span id="objAlt"></span></p>
+        <p><strong>Velocity:</strong> <span id="objVel"></span></p>
+    </div>
+
+    <button id="playPauseBtn" class="filter-btn play-pause-btn">Pause</button>
+
+    <script src="visualizer.js"></script>
+</body>
+</html>
