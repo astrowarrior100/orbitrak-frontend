@@ -30,7 +30,7 @@ async function runScan() {
     const radius = parseFloat(document.getElementById("radiusInput").value);
 
     try {
-        const response = await fetch("https://orbitrak-backend.onrender.com/search_debris", {
+        const response = await fetch("https://orbitrak-backend.onrender.com/search-debris", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ latitude: lat, longitude: lon, radius_km: radius })
