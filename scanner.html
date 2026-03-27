@@ -19,13 +19,26 @@
 
         <!-- STEP 1 -->
         <div id="step1" class="step">
-            <h1>Step 1: Enter Coordinates</h1>
+            <h1>Step 1: Enter Coordinate Information</h1>
 
-            <label>Enter Latitude:</label>
+           <label>Enter Latitude:</label>
             <input id="latInput" type="number" step="0.0001">
 
             <label>Enter Longitude:</label>
             <input id="lonInput" type="number" step="0.0001">
+
+            <div class="sample-coordinates">
+                <p><strong>Sample Coordinates (Click to autofill):</strong></p>
+                <ul>
+                    <li onclick="fillCoords(47.6062, -122.3321)">Seattle: 47.6062°, -122.3321°</li>
+                    <li onclick="fillCoords(37.7749, -122.4194)">San Francisco: 37.7749°, -122.4194°</li>
+                    <li onclick="fillCoords(29.7604, -95.3698)">Houston: 29.7604°, -95.3698°</li>
+                    <li onclick="fillCoords(40.7128, -74.0060)">New York: 40.7128°, -74.0060°</li>
+                    <li onclick="fillCoords(25.7617, -80.1918)">Miami: 25.7617°, -80.1918°</li>
+                    <li onclick="fillCoords(42.3601, -71.0589)">Boston: 42.3601°, -71.0589°</li>
+                </ul>
+            </div>
+
 
             <button class="next-btn" onclick="goToStep2()">Next →</button>
         </div>

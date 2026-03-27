@@ -51,6 +51,11 @@ async function runScan() {
     }
 }
 
+function fillCoords(lat, lon) {
+    document.getElementById("latInput").value = lat;
+    document.getElementById("lonInput").value = lon;
+}
+
 
 function updateRadiusPreview(lat, lon, radiusKm) {
     const img = document.getElementById("radiusBaseImage");

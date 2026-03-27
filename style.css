@@ -576,4 +576,29 @@ body {
     pointer-events: none; /* canvas should not block clicks */
 }
 
+.sample-coordinates {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.sample-coordinates ul {
+    margin: 6px 0 0 15px;
+    padding: 0;
+}
+
+.sample-coordinates li {
+    cursor: pointer;
+    margin-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+.sample-coordinates li:hover {
+    color: #0078ff;
+    text-decoration: underline;
+}
+
+
 
